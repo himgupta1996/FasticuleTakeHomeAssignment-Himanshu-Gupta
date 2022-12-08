@@ -86,6 +86,11 @@ pytest service
 Note: the configuration in the reverse proxy is set so tha HTTP request will be automatically redirected to https and a secure connection will be established.
 
 
+## Challenge 3: Create a GitHub Actions workflow to build the docker image on each commit to the main branch.
+There are 3 workflows added in the folder `.github/workflows`:
+1. `docker-image-http.yml`: This workflow builds a docker image using the configuration specified in `Dockerfile`(situated in root folder). This image when run will start the web server and expose HTTP endpoint for the client.  
+1. `docker-image-https.yml`: This workflow builds a docker image using the configuration specified in `Dockerfile.https`(situated in root folder). This image when run will start the web server and expose HTTPS endpoint for the client.
+1. `docker-image-https-rp.yml`: This workflow builds docker images using the configuration specified in `docker-compose.yml`(situated in root folder). The configuration is for a reverse proxy and web server to work together and expose both HTTPS and HTTP endpoint for the client. The HTTP request is redirected to HTTPS for ultimately establishing a secure connection between the client and the server.
 
 
 
